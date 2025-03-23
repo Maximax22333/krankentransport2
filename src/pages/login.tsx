@@ -2,29 +2,24 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "@/components/LoginForm";
 import { cn } from "@/lib/utils";
+import supabase from "@/lib/supabase";
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const handleLogin = async (values: { email: string }) => {
+  const handleLogin = async (values: { email: string, password: string }) => {
     try {
-      // In a real implementation, this would use Supabase Auth with Magic Links
-      // For example:
-      // const { error } = await supabase.auth.signInWithOtp({
-      //   email: values.email,
-      //   options: {
-      //     emailRedirectTo: `${window.location.origin}/dashboard`,
-      //   },
-      // });
-      //
-      // if (error) throw error;
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
+      });
 
-      // For demo purposes, we'll just simulate a successful login
-      console.log("Magic link would be sent to:", values.email);
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      if (error) {
+        console.error("Login-Fehler:", error.message);
+        return;
+      }
 
-      // In a real app, we wouldn't navigate here - the user would click the magic link in their email
-      // This is just for demonstration purposes
+      // Redirect nach erfolgreichem Login
       navigate('/dashboard');
     } catch (error) {
       console.error("Login error:", error);
