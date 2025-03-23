@@ -7,11 +7,10 @@ import supabase from "@/lib/supabase";
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const handleLogin = async (values: { email: string, password: string }) => {
+  const handleLogin = async (values: { email: string }) => {
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithOtp({
         email: values.email,
-        password: values.password,
       });
 
       if (error) {

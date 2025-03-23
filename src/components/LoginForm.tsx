@@ -60,28 +60,18 @@ const LoginForm = ({ onSubmit, className = "" }: LoginFormProps = {}) => {
   };
 
   return (
-    <div
-      className={cn(
-        "w-full max-w-md p-6 bg-white rounded-lg shadow-md",
-        className,
-      )}
-    >
+    <div className={cn("w-full max-w-md p-6 bg-white rounded-lg shadow-md", className)}>
       {!magicLinkSent ? (
         <>
           <div className="mb-6 text-center">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Mitarbeiter Login
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900">Mitarbeiter Login</h2>
             <p className="mt-2 text-sm text-gray-600">
               Geben Sie Ihre E-Mail-Adresse ein, um einen Magic Link zu erhalten
             </p>
           </div>
 
           <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(handleSubmit)}
-              className="space-y-4"
-            >
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
               <FormField
                 control={form.control}
                 name="email"
@@ -122,13 +112,9 @@ const LoginForm = ({ onSubmit, className = "" }: LoginFormProps = {}) => {
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100 mb-4">
             <Mail className="h-6 w-6 text-green-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Magic Link gesendet!
-          </h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Magic Link gesendet!</h2>
           <p className="text-gray-600 mb-6">
-            Wir haben einen Magic Link an Ihre E-Mail-Adresse gesendet. Bitte
-            prüfen Sie Ihren Posteingang und klicken Sie auf den Link, um sich
-            anzumelden.
+            Wir haben einen Magic Link an Ihre E-Mail-Adresse gesendet. Bitte prüfen Sie Ihren Posteingang und klicken Sie auf den Link, um sich anzumelden.
           </p>
           <Button
             variant="outline"
