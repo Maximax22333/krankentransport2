@@ -25,7 +25,7 @@ const LoginPage = () => {
 
       // In a real app, we wouldn't navigate here - the user would click the magic link in their email
       // This is just for demonstration purposes
-      // setTimeout(() => navigate('/dashboard'), 3000);
+      navigate('/dashboard');
     } catch (error) {
       console.error("Login error:", error);
       throw error;

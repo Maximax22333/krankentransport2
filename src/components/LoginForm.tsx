@@ -72,74 +72,33 @@ const LoginForm = ({ onSubmit, className = "" }: LoginFormProps = {}) => {
             <h2 className="text-2xl font-bold text-gray-900">
               Mitarbeiter Login
             </h2>
-            <p className="mt-2 text-sm text-gray-600">
-              Geben Sie Ihre E-Mail-Adresse ein, um einen Magic Link zu erhalten
-            </p>
           </div>
-
           <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(handleSubmit)}
-              className="space-y-4"
-            >
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>E-Mail</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
-                        <Input
-                          placeholder="name@example.de"
-                          className="pl-10"
-                          {...field}
-                          disabled={isLoading}
-                        />
-                      </div>
+                      <Input placeholder="E-Mail-Adresse eingeben" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-
               <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Wird gesendet...
-                  </>
-                ) : (
-                  "Magic Link senden"
-                )}
+                {isLoading ? <Loader2 className="animate-spin" /> : "Login"}
               </Button>
             </form>
           </Form>
         </>
       ) : (
         <div className="text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100 mb-4">
-            <Mail className="h-6 w-6 text-green-600" />
-          </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Magic Link gesendet!
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Wir haben einen Magic Link an Ihre E-Mail-Adresse gesendet. Bitte
-            prüfen Sie Ihren Posteingang und klicken Sie auf den Link, um sich
-            anzumelden.
+          <p className="text-gray-600">
+            Ein Magic Link wurde an Ihre E-Mail-Adresse gesendet.
           </p>
-          <Button
-            variant="outline"
-            className="w-full"
-            onClick={() => {
-              setMagicLinkSent(false);
-              form.reset();
-            }}
-          >
-            Zurück zum Login
-          </Button>
         </div>
       )}
     </div>
