@@ -35,7 +35,7 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-4">
       <div className="w-full max-w-md mb-8 text-center">
-        <img src="/logo.svg" alt="Logo" className="h-16 mx-auto mb-4" />
+        <img src="" alt="Logo" className="h-16 mx-auto mb-4" />
         <p className="text-gray-600">
           Mitarbeiterbereich - Bitte melden Sie sich an
         </p>
